@@ -178,14 +178,14 @@ void Tiemelody(){
 void updateState() {
   for (int i = 0; i < 9; i++) {
     if (state[i] == 1) {              // If player 1 has placed their move
-      digitalWrite(blue_leds[i], 0);  // Turn off blue
+      digitalWrite(green_leds[i], 0);  // Turn off blue
       digitalWrite(red_leds[i], 1);   // Turn on red
     } else if (state[i] == -1) {
-      digitalWrite(blue_leds[i], 1);
+      digitalWrite(green_leds[i], 1);
       digitalWrite(red_leds[i], 0);
     } else {  // ALL OFF
-      digitalWrite(blue_leds[i], 0);
-      digitalWrite(red_leds[i], 0);
+      digitalWrite(green_leds[i], 0);
+      digitalWrite(green_leds[i], 0);
     }
   }
 }
@@ -259,7 +259,7 @@ void loop() {
   }
   Serial.println();
  
-  //
+  //While loop controlling buttons with high and low commands using updatestate
   while (true) {
     for (int x = 0; x < 9; x++) {
       if (digitalRead(BUTTONS[x]) == LOW) {
@@ -283,11 +283,10 @@ void loop() {
       break;
     }
   }
-// new comment
-  
 
+// checking the winner function 
   winner = checkWin();
-
+//LCD giving output when player 1 wins, this loop also plays the winner melody for red win
   if (winner == 1) {
     for (int x = 0; x < 9; x++) {
       state[x] = 1;
@@ -299,7 +298,7 @@ void loop() {
     updateState();
     Redmelody();
   }
-
+//LCD giving output when player 2 wins, this loop also plays the winner melody for green wins
   if (winner == -1) {
     for (int x = 0; x < 9; x++) {
       state[x] = -1;
@@ -313,18 +312,18 @@ void loop() {
     updateState();
     Greenmelody();
   }
-  
+ //check if TIe is occuring 
   checkTie(winner);
   
   
-
+//change which player is playing(player 1 to player 2)
   if (winner == 0) {
   }
 
   playerOneTurn = !playerOneTurn;
   
 }
-
+// This contains all the winning conditions for red and green LED's
 int checkWin() {
   int results[9];
 
@@ -356,7 +355,7 @@ int checkWin() {
   return 0;
 }
 
-
+//This function checks for ties and also prints TIE in the LCD screen. It also resets the game board when the result of a game is a TIE
 void checkTie(int win) {
   for (int x = 0; x <= 8; x++) {
     if (state[x] == 0) {
@@ -374,7 +373,7 @@ void checkTie(int win) {
     delay(2500);
 
     
-    // only reach this line when it's a tie
+    // only reaches this line when it's a tie
     for (int x = 0; x <= 8; x++) {
       state[x] = 0;
       updateState();
