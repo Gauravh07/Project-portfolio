@@ -1,0 +1,12 @@
+###Running Testcase input.txt1
+#Result Matches testcases/input.txt1.sol
+###Running Testcase input.txt2
+#Result Matches testcases/input.txt2.sol
+###Running Testcase input.txt3
+#Result Matches testcases/input.txt3.sol
+###Running Testcase input.txt4
+#Result Matches testcases/input.txt4.sol
+###Running Testcase input.txt5
+#Result Matches testcases/input.txt5.sol
+###Running Testcase input.txt6
+#Result Matches testcases/input.txt6.sol
