@@ -4,7 +4,7 @@ we used the synthesis to compile the .AOCX file
 
 Edit 04/12
 
-Made changes to capture_image.cc to display video out into the monitor and take images and convert it into b&w but it is not fully functional.
+Made changes to capture_image.cc to display video out into the monitor and take images and convert it into b&w 
 
 Edit 04/16
 
